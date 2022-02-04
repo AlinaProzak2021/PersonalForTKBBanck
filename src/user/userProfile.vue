@@ -11,7 +11,7 @@
         <div class="user-profile__sub-header-block">
           <div class="user-profile__title active">Активные<sup>1</sup></div>
           <div class="user-profile__title not-active">
-            Неактиывные <sup>0</sup>
+            Неактивные <sup>0</sup>
           </div>
         </div>
         <div class="user-profile__card">

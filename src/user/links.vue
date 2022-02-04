@@ -4,6 +4,7 @@
       <div class="product-links__title">
         Покупайте товары и получайте кешбек от ТКБ банка
       </div>
+
       <div
         v-for="(key, index) in links"
         :key="index"
@@ -11,7 +12,7 @@
         class="list__item-link"
       >
         <div class="item-link__image">
-          <img :src="require(`./../../resources/image/${key.imgUrl}`)" />
+          <a :href="`${key.linkToWebsite}`" target="_blank"><img :src="require(`./../../resources/image/${key.imgUrl}`)" /></a>
         </div>
         <div class="item-link__title">
           {{ key.title }}
@@ -54,72 +55,94 @@ export default {
           title: "Товары для детей",
           property: "child",
           link: "updatechild",
+          linkToWebsite:
+            "https://www.avito.ru/sankt-peterburg?q=%D1%82%D0%BE%D0%B2%D0%B0%D1%80%D1%8B+%D0%B4%D0%BB%D1%8F+%D0%B4%D0%B5%D1%82%D0%B5%D0%B9",
         },
         {
           imgUrl: "avito_child_.png",
           title: "новые автомобили",
           property: "newauto",
           link: "updatenewauto",
+          linkToWebsite: "https://www.avito.ru/sankt-peterburg/transport?cd=1",
         },
         {
           imgUrl: "dns.png",
           title: "офисная техника",
           property: "officetech",
           link: "updateofficetech",
+          linkToWebsite:
+            "https://www.dns-shop.ru/catalog/801923443bad7fd7/orgtexnika-i-ofisnoe-oborudovanie/",
         },
         {
           imgUrl: "avito_child_.png",
           title: "коммерческая недвижимость",
           property: "komnedv",
           link: "updatekomnedv",
+          linkToWebsite:
+            "https://www.avito.ru/sankt-peterburg/nedvizhimost?cd=1",
         },
         {
           imgUrl: "auto_ru.png",
           title: "б/у автомобили",
           property: "buauto",
           link: "updatebuauto",
+          linkToWebsite:
+            "https://www.avito.ru/sankt-peterburg/avtomobili?cd=1&q=%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C+%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%BE%D0%B1%D0%B8%D0%BB%D0%B8+%D0%B1%D1%83&radius=0",
         },
         {
           imgUrl: "dns.png",
           title: "компьютеры и комплектующие",
           property: "pc",
           link: "updatepc",
+          linkToWebsite:
+            "https://www.dns-shop.ru/catalog/17aa72ab16404e77/komplektuyushhie-kompyutery-i-noutbuki/",
         },
         {
           imgUrl: "avito_child_.png",
           title: "недвижимость",
           property: "gknedv",
           link: "updategknedv",
+          linkToWebsite:
+            "https://www.avito.ru/sankt-peterburg/nedvizhimost?cd=1",
         },
         {
           imgUrl: "yandex.png",
           title: "Первичный рынок",
           property: "fr",
           link: "updatefr",
+          linkToWebsite:
+            "https://realty.yandex.ru/ipoteka/rajffajzenbank-322384/pervichnyj-rynok-nedvizhimosti-pik-2628465/?rgid=741965",
         },
         {
           imgUrl: "steam.png",
           title: "компьютерные игры",
           property: "games",
           link: "updategames ",
+          linkToWebsite: "https://store.steampowered.com/games/?l=russian",
         },
         {
           imgUrl: "avito_child_.png",
           title: "бытовая техника",
           property: "btech",
           link: "updatebtech",
+          linkToWebsite:
+            "https://www.avito.ru/sankt-peterburg?q=%D0%B1%D1%8B%D1%82%D0%BE%D0%B2%D0%B0%D1%8F+%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0",
         },
         {
           imgUrl: "yandex.png",
           title: "вторичный рынок",
           property: "sr",
           link: "updatesr",
+          linkToWebsite:
+            "https://realty.yandex.ru/sankt-peterburg_i_leningradskaya_oblast/kupit/kvartira/vtorichniy-rynok/",
         },
         {
           imgUrl: "e_apteka.png",
           title: "медикаменты",
           property: "med",
           link: "updatemed",
+          linkToWebsite:
+            "https://www.eapteka.ru/spb/?utm_source=google_rw&utm_medium=cpc&utm_campaign=ga-hand-search-brand-new-tgo-keyword-spb|11909254052&utm_term=%D0%B5%20%D0%B0%D0%BF%D1%82%D0%B5%D0%BA%D0%B0%20%D1%81%D0%BF%D0%B1&utm_content=campaignid-11909254052|creative-488172215507|targetid-kwd-1251967442395|adgroupid-114194933223|adposition-|network-g|placement-|target-|adtype-|merchant_id-|product_channel-|product_id-|product_country-|product_language-|product_partition_id-|store_code-|feeditemid-|matchtype-p|device-c|adwords_producttargetid-|loc_physical_ms-9047068|loc_interest_ms-|devicemodel-&gclid=Cj0KCQiAuvOPBhDXARIsAKzLQ8GUNyamM2JjsDzupmDJsB_CxfgfvUw6U_odCFgw8sFGe6MLAqSRYBQaAiFkEALw_wcB",
         },
       ],
     };
