@@ -11,17 +11,19 @@
           </router-link>
         </div>
         <div class="nav-bar__user-logo__purchases">
-           <router-link to="/links">
-          <img src="./../../resources/image/shopping-bag(2) 1.png" alt="" />
-           </router-link>
+          <router-link to="/links">
+            <img src="./../../resources/image/shopping-bag(2) 1.png" alt="" />
+          </router-link>
         </div>
-        <div class="nav-bar__user-logo__log-out" @click="signOut()">
-          <img src="./../../resources/image/logout (1).png" alt="" />
-        </div>
+        <router-link to="/signIn">
+          <div class="nav-bar__user-logo__log-out" @click="signOut()">
+            <img src="./../../resources/image/logout (1).png" alt="" />
+          </div>
+        </router-link>
       </div>
       <div v-else class="nav-bar__user-logo nav-ber_user-logo__sign-in-out">
         <div class="nav-bar__user-logo__user">
-          <router-link to="/signup">
+          <router-link to="/signUp">
             <img src="./../../resources/image/user (1).png" />
           </router-link>
         </div>

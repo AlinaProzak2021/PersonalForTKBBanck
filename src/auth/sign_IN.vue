@@ -22,11 +22,11 @@
         <a @click="$router.push('/signUp')">Зарегистрироваться</a>
       </div>
     </form>
-    <div class="login__footer">
+    <!-- <div class="login__footer">
       <div class="login__link-sign-up">
-        У меня еще нет аккаунта <a href="#">Зарегистрироваться</a>
+        У меня еще нет аккаунта <a  @click="router.push('/signUp')"  href="#">Зарегистрироваться</a>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 <script>
@@ -189,7 +189,11 @@ input {
   display: none;
 }
 @media (max-width: 765px) {
+  .login {
+    width: 100%;
+  }
   .login__form {
+    width: 100%;
     border: none;
     border-radius: 0;
     background: none;
@@ -216,8 +220,21 @@ input {
     border-radius: 5px;
   }
   .form__link-sign-up {
-    display: none;
+    color: #ffffff;
+    bottom: 0;
+    position: fixed;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    background: #353535;
+    margin-bottom: 0;
   }
+
   .login__footer {
     display: block;
     text-align: center;
@@ -245,5 +262,4 @@ input {
     color: #38b1ac;
   }
 }
-
 </style>

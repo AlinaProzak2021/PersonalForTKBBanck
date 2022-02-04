@@ -592,5 +592,9 @@ export default {
     margin-left: auto;
     margin-right: auto;
   }
+  .registration-form__link-to-sign-in a{
+    text-decoration: none;
+    color: #38B1AC;
+  }
 }
 </style>

@@ -31,7 +31,10 @@
           </div>
           <div class="user-profile__card-data">
             <div class="user-profile__card-number">
-              <div class="user-profile__number_card">
+              <div
+                v-if="isClickEye === false"
+                class="user-profile__number_card"
+              >
                 {{ currentUser.cardNumber.substring(0, 4) }}
                 {{ currentUser.cardNumber.substring(5, 9) }}
                 {{ currentUser.cardNumber.substring(10, 14) }}
@@ -41,7 +44,18 @@
                   )
                 }}
               </div>
-              <div class="user-profile__hide-number-logo">
+              <div v-else class="user-profile__number_card closeNumber">
+                **** **** ****
+                {{
+                  currentUser.cardNumber.substring(
+                    currentUser.cardNumber.length - 4
+                  )
+                }}
+              </div>
+              <div
+                class="user-profile__hide-number-logo"
+                @click="isClickEye_()"
+              >
                 <img src="./../../resources/image/asd 1.png" alt="" />
               </div>
             </div>
@@ -55,6 +69,9 @@
         </div>
         <div class="user-profile__sub-header-block">
           <div class="user-profile__title border">Продукты банка</div>
+        </div>
+        <div v-if="recomendationst.length===0" class="user-profile__title-not-rec">
+          Скоро здесь будут рекомендации от банка ТКБ!
         </div>
         <div class="user-profile__products">
           <div
@@ -119,6 +136,7 @@ export default {
     return {
       recomendationst: [],
       hover: false,
+      isClickEye: false,
     };
   },
   created() {
@@ -132,12 +150,9 @@ export default {
       return this.isSignedIn();
     },
   },
-  beforeUpdate() {
-    return this.isSignedIn();
-  },
   methods: {
-    ...mapMutations(["setUserData","setCurrentUser"]),
-      signOut() {
+    ...mapMutations(["setUserData", "setCurrentUser"]),
+    signOut() {
       this.setUserToken({});
       this.setCurrentUser({});
       this.$router.push("/signIn");
@@ -165,15 +180,12 @@ export default {
         .then((response) => response.json())
         .then((data) => {
           this.recomendationst = data.list;
-          console.log(data.list[0].url);
+          console.log(this.recomendationst);
         });
     },
 
     deleteProduct(property, index) {
-      //
-      //   let massiv = []
-      //  massiv.push(property)
-      //  console.log(massiv)
+      console.log(index);
       console.log(property);
       let massiv = property;
 
@@ -190,8 +202,13 @@ export default {
         },
       })
         .then((response) => response.text())
-        .then((text) => console.log(text));
-      this.recomendationst.splice(index, 1);
+        .then((text) => {
+          this.recomendationst.splice(index, 1);
+          console.log(text);
+        });
+    },
+    isClickEye_() {
+      this.isClickEye = !this.isClickEye;
     },
   },
 };
@@ -200,7 +217,6 @@ export default {
 .user-profile {
   width: 100%;
   height: 100%;
-  position: relative;
 }
 .user-profile__wrapper {
   display: flex;
@@ -216,6 +232,16 @@ export default {
   font-style: normal;
   font-weight: normal;
   font-size: 25px;
+  line-height: 29px;
+  letter-spacing: 0.1em;
+  color: #353535;
+  padding: 10px;
+}
+.user-profile__title-not-rec {
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
   line-height: 29px;
   letter-spacing: 0.1em;
   color: #353535;
@@ -315,8 +341,8 @@ export default {
 }
 .user-profile__card-number {
   display: flex;
-  width: 400px;
-  justify-content: space-around;
+  max-width: 400px;
+ 
   align-items: center;
 }
 .user-profile__number_card {
@@ -325,6 +351,12 @@ export default {
   line-height: 27px;
   letter-spacing: 0.5px;
   color: #ffffff;
+  padding-right: 10px;
+  min-width: 150px;
+}
+.closeNumber{
+  min-width: 280px;
+   
 }
 .user-profile__card-years {
   display: flex;
@@ -473,7 +505,7 @@ export default {
   }
   .user-profile__card {
     width: 235px;
-    padding: 25px;
+    padding: 20px;
   }
   .user-profile__card-type {
     margin-bottom: 5px;
@@ -504,19 +536,30 @@ export default {
   .user-profile__card-data {
     width: 235px;
   }
+  .user-profile__card-number{
+      min-width: 160px;
+      max-width: 220px;
+       
+  }
+  .closeNumber{
+    min-width: 120px;
+  }
   .user-profile__number_card {
-    font-size: 10px;
+    font-size: 9px;
+   max-width: 190px;
+   padding-right: 2px;
   }
   .user-profile__hide-number-logo {
     width: 17px;
     height: 17px;
+ 
   }
   .user-profile__hide-number-logo img {
     width: 100%;
     height: 100%;
   }
   .user-profile__card-years {
-    font-size: 10px;
+    font-size: 9px;
   }
   .user-profile__recomendatoon-block {
     width: 300px;
@@ -536,6 +579,15 @@ export default {
     width: 290px;
     height: 30px;
     margin-bottom: 30px;
+  }
+  .user-profile__remove-product {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 28px;
+    left: 55px;
+    z-index: 2;
+    display: none;
   }
   .user-profile__footer {
     display: block;
