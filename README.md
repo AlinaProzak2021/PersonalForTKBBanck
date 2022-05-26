@@ -1,4 +1,4 @@
-# NIM
+# TKB Banck
 
 ## Project setup
 ```
